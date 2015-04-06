@@ -22,6 +22,16 @@ namespace uFricky
                 Console.WriteLine(entry.Key + " " + entry.Value);
             }
         }
+        public int sumUser(Userfile file)
+        {
+            int sum = 0;
+            foreach (KeyValuePair<string, int> entry in file.amounts)
+            {
+                sum += entry.Value;
+            }
+
+            return sum;
+        }
         public void updateFile()
         {
             userfile = fileHandler.ReadFromFile();
@@ -30,6 +40,9 @@ namespace uFricky
         {
             string[] orders = input.Split(' ');
 
+            /*
+             * Implement: save, sort, calc, encrypt
+             */
             switch (orders[0])
             {
                 case "add":
@@ -46,7 +59,13 @@ namespace uFricky
                     Console.Clear();
                     break;
                 case "delete":
-                    FileHandler.Delete();
+                    FileHandler.Delete(orders[1]);
+                    break;
+                case "save":
+                    fileHandler.WriteToFile(userfile);
+                    break;
+                case "sum":
+                    Console.WriteLine("The total amount budgeted in this file is: " + sumUser(userfile));
                     break;
                 default:
                     Console.WriteLine("Oops! Wrong command!");

@@ -10,7 +10,7 @@ namespace uFricky
     public class Userfile
     {
         //Not yet implemented username
-        string userName = "";
+        //string userName = "";
         //Name and associated value
         public Dictionary<string,int> amounts = new Dictionary<string,int>();
     }

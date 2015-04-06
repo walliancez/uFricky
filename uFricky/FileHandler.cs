@@ -11,17 +11,26 @@ namespace uFricky
 {
     public class FileHandler
     {
-        public string saveFolder;
+        public string saveFolder = "userfile.USRFILE";
+        public string fileExt = ".USRFILE";
 
         //<summary>Not yet implemented</summary>
         public FileHandler(string saveFolder)
         {
-            this.saveFolder = saveFolder;
+            this.saveFolder = saveFolder.Split('.')[0] + ".USRFILE";
         }
 
-        public static void Delete()
+        public static void Delete(string saveFile)
         {
-            File.Delete("list.bin");
+            try
+            {
+                File.Delete(saveFile);
+            }
+            catch (Exception e)
+            {
+                
+                Console.WriteLine("Error: File not found");
+            }
         }
 
         public FileHandler()
@@ -31,17 +40,17 @@ namespace uFricky
         public void WriteToFile(Userfile userFile)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("list.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream(saveFolder, FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, userFile);
             stream.Close();
         }
         public Userfile ReadFromFile()
         {
             Userfile returnUserfile;
-            if (File.Exists("list.bin"))
+            if (File.Exists(saveFolder))
             {
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream("list.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                Stream stream = new FileStream(saveFolder, FileMode.Open, FileAccess.Read, FileShare.Read);
                 returnUserfile = (Userfile)formatter.Deserialize(stream);
                 stream.Close();
             }

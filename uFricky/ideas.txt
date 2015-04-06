@@ -1,0 +1,3 @@
+﻿* Multiple users
+* Encrypted saves
+* Customizable savefile name
