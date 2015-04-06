@@ -1,0 +1,6 @@
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\bin\Debug\uFricky.exe.config
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\bin\Debug\uFricky.exe
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\bin\Debug\uFricky.pdb
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\obj\Debug\uFricky.csprojResolveAssemblyReference.cache
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\obj\Debug\uFricky.exe
+c:\users\hannes\documents\visual studio 2012\Projects\uFricky\uFricky\obj\Debug\uFricky.pdb
