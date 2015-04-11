@@ -17,7 +17,7 @@ namespace uFricky
 
         public void printTable(Userfile f)
         {
-            foreach(KeyValuePair<string,int> entry in f.amounts)
+            foreach(KeyValuePair<string,int> entry in f.getList())
             {
                 Console.WriteLine(entry.Key + " " + entry.Value);
             }
@@ -25,7 +25,7 @@ namespace uFricky
         public int sumUser(Userfile file)
         {
             int sum = 0;
-            foreach (KeyValuePair<string, int> entry in file.amounts)
+            foreach (KeyValuePair<string, int> entry in file.getList())
             {
                 sum += entry.Value;
             }
@@ -35,6 +35,10 @@ namespace uFricky
         public void updateFile()
         {
             userfile = fileHandler.ReadFromFile();
+        }
+        public void save()
+        {
+            fileHandler.WriteToFile(userfile);
         }
         public void inputReadAndDo(string input)
         {
@@ -46,7 +50,7 @@ namespace uFricky
             switch (orders[0])
             {
                 case "add":
-                    userfile.amounts.Add(orders[1], Convert.ToInt32(orders[2]));
+                    userfile.getList().Add(orders[1], Convert.ToInt32(orders[2]));
                     break;
                 case "print":
                     printTable(userfile);
@@ -59,10 +63,11 @@ namespace uFricky
                     Console.Clear();
                     break;
                 case "delete":
-                    FileHandler.Delete(orders[1]);
+                    FileHandler.Delete();
+                    updateFile();
                     break;
                 case "save":
-                    fileHandler.WriteToFile(userfile);
+                    save();
                     break;
                 case "sum":
                     Console.WriteLine("The total amount budgeted in this file is: " + sumUser(userfile));
@@ -81,7 +86,7 @@ namespace uFricky
 
                 
             }
-            fileHandler.WriteToFile(userfile);
+            
         }
         static void Main(string[] args)
         {

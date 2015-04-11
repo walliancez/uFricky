@@ -20,11 +20,11 @@ namespace uFricky
             this.saveFolder = saveFolder.Split('.')[0] + ".USRFILE";
         }
 
-        public static void Delete(string saveFile)
+        public static void Delete()
         {
             try
             {
-                File.Delete(saveFile);
+                File.Delete("userfile.USRFILE");
             }
             catch (Exception e)
             {

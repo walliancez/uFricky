@@ -12,6 +12,28 @@ namespace uFricky
         //Not yet implemented username
         //string userName = "";
         //Name and associated value
-        public Dictionary<string,int> amounts = new Dictionary<string,int>();
+        private string nameID = "default";
+        private Dictionary<string,int> amounts; 
+
+        public Userfile()
+        {
+            amounts = new Dictionary<string,int>();
+        }
+        public Userfile(string nameID)
+        {
+            this.nameID = nameID;
+            amounts = new Dictionary<string, int>();
+        }
+        public Dictionary<string, int> getList()
+        {
+            return amounts;
+        }
+        public string name
+        {
+            get
+            {
+                return nameID;
+            }
+        }
     }
 }
