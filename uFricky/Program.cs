@@ -15,11 +15,18 @@ namespace uFricky
         Userfile userfile = new Userfile();
         bool running = true;
 
-        public void printTable(Userfile f)
+        public void printTable(Userfile file)
         {
-            foreach(KeyValuePair<string,int> entry in f.getList())
+            if (file.getList().Count == 0)
             {
-                Console.WriteLine(entry.Key + " " + entry.Value);
+                Console.WriteLine("****Nothing to print****");
+            }
+            else
+            {
+                foreach (KeyValuePair<string, int> entry in file.getList())
+                {
+                    Console.WriteLine(entry.Key + " " + entry.Value);
+                }
             }
         }
         public int sumUser(Userfile file)
@@ -88,6 +95,7 @@ namespace uFricky
             }
             
         }
+        
         static void Main(string[] args)
         {
             Program p = new Program();
